@@ -151,6 +151,10 @@ with open(os.devnull, 'w') as devnull:
         cert = openssl.communicate(input=pkey)[0]
         set_config('auth_pkey', pkey.decode())
         set_config('auth_cert', cert.decode())
+        #print('cert-----')
+        #print(pkey.decode())
+        #print('key------')
+        #print(cert.decode())
     else:
         set_config('auth_pkey', 'NEED_SET')
         set_config('auth_cert', 'NEED_SET')

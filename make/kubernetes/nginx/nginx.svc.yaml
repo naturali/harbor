@@ -10,3 +10,4 @@ spec:
       port: 443
   selector:
     name: nginx-apps
+  type: LoadBalancer

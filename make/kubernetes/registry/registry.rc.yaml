@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: registry-app
-        image: harbor/registry
+        image: daocloud.io/library/registry:2.6.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
@@ -23,8 +23,8 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /etc/docker/registry
-        - name: storage
-          mountPath: /storage
+#        - name: storage
+#          mountPath: /storage
       volumes:
       - name: config
         configMap:
@@ -34,6 +34,8 @@ spec:
             path: config.yml
           - key: cert
             path: root.crt
-      - name: storage
-        persistentVolumeClaim:
-          claimName: registry-pvc
+#      - name: storage
+#        hostPath:
+#          path: /data/harbor/registry
+#        persistentVolumeClaim:
+#          claimName: registry-pvc

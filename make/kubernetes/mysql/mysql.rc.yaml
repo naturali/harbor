@@ -13,9 +13,10 @@ spec:
       labels:
         name: mysql-apps
     spec:
+      nodeName: k8s-agentpool1-72890096-1
       containers:
       - name: mysql-app
-        image: harbor/mysql
+        image: r.fds.so:5000/harbor-db:0.5.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3306
@@ -30,5 +31,7 @@ spec:
           mountPath: /var/lib/mysql
       volumes:
       - name: mysql-storage
-        persistentVolumeClaim:
-          claimName: storage-pvc 
+        hostPath:
+          path: /data/harbor/mysql
+#        persistentVolumeClaim:
+#          claimName: storage-pvc 
